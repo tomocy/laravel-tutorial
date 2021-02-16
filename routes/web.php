@@ -19,16 +19,4 @@ Route::get('/', function () {
     ];
 });
 
-Route::get('/posts/{post}', function ($post) {
-    $posts = [
-        'aaa' => 'AAAAA',
-        'zzz' => 'ZZZZZ',
-    ];
-
-    if (!array_key_exists($post, $posts)) {
-        abort(404);
-    }
-    return [
-        'contents' => $posts[$post],
-    ];
-});
+Route::get('/posts/{post}', 'PostsController@show');
