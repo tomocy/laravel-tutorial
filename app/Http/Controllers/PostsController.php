@@ -6,18 +6,14 @@ use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-    private static $posts = [
-        'aaa' => 'Aiueo',
-        'zzz' => 'Sleepy',
-    ];
-
-    public function show($post)
+    public function show($slug)
     {
-        if (!array_key_exists($post, self::$posts)) {
+        $post = \DB::table('posts')->where('slug', $slug)->first();
+        if (!$post) {
             abort(404);
         }
         return [
-            'contents' => self::$posts[$post],
+            'body' => $post->body,
         ];
     }
 }

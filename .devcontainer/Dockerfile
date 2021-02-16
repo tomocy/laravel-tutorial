@@ -24,6 +24,7 @@ RUN if [ "${INSTALL_NODE}" = "true" ]; then su vscode -c "umask 0002 && . /usr/l
 # [Optional] Uncomment this line to install global node packages.
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
 RUN rm -rf /usr/local/etc/php/conf.d/xdebug.ini
+RUN docker-php-ext-install pdo_mysql
 
 USER vscode
 
