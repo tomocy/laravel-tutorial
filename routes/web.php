@@ -18,3 +18,17 @@ Route::get('/', function () {
         'name' => request('name'),
     ];
 });
+
+Route::get('/posts/{post}', function ($post) {
+    $posts = [
+        'aaa' => 'AAAAA',
+        'zzz' => 'ZZZZZ',
+    ];
+
+    if (!array_key_exists($post, $posts)) {
+        abort(404);
+    }
+    return [
+        'contents' => $posts[$post],
+    ];
+});
