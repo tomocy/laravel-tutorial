@@ -28,7 +28,7 @@
     "editorconfig.editorconfig",
     "ValeryanM.vscode-phpsab",
     "felixfbecker.php-debug",
-    "felixfbecker.php-intellisense",
+    "bmewburn.vscode-intelephense-client",
     "mrmlnc.vscode-apache",
     "mtxr.sqltools",
     "mtxr.sqltools-driver-mysql"
