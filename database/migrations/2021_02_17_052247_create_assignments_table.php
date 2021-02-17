@@ -15,6 +15,7 @@ class CreateAssignmentsTable extends Migration
     {
         Schema::create('assignments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('assignee_id')->constrained('users')->onDelete('cascade');
             $table->text('body');
             $table->boolean('completed')->default(false);
             $table->timestamp('due_date')->nullable();

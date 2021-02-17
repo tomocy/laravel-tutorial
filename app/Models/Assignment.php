@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 class Assignment extends Model
 {
@@ -17,5 +18,10 @@ class Assignment extends Model
 
         $this->completed = true;
         $this->save();
+    }
+
+    public function assignee()
+    {
+        return $this->belongsTo(User::class);
     }
 }
