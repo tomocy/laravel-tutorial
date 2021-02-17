@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use App\Models\User;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
 
 class Assignment extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['body'];
 
     public function complete()
     {
@@ -23,5 +26,10 @@ class Assignment extends Model
     public function assignee()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class)->withTimestamps();
     }
 }

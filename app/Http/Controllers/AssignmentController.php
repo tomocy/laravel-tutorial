@@ -21,6 +21,7 @@ class AssignmentController extends Controller
     {
         return request()->validate([
             'body' => ['required'],
+            'tags' => ['exists:tags,id']
         ]);
     }
 }
