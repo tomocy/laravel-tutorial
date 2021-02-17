@@ -20,3 +20,6 @@ Route::get('/', function () {
 });
 
 Route::get('/posts/{post}', 'PostsController@show');
+
+Route::post('/assignments', 'AssignmentController@store');
+Route::put('/assignments/{assignment}', 'AssignmentController@update');
