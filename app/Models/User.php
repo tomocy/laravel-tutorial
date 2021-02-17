@@ -2,11 +2,12 @@
 
 namespace App\Models;
 
+use App\Models\Assignment;
+use App\Notifications\AssignmentAssigned;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use App\Models\Assignment;
 
 class User extends Authenticatable
 {
@@ -41,6 +42,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function assign(array $data)
+    {
+        $assignment = $this->assignments()->create($data);
+        $this->notify(new AssignmentAssigned($assignment));
+        return $assignment;
+    }
 
     public function assignments()
     {
