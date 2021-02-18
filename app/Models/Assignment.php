@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\User;
-use App\Models\Tag;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Gate;
@@ -26,6 +24,14 @@ class Assignment extends Model
     public function isAssignedTo(User $user)
     {
         return $this->assignee->is($user);
+    }
+
+    public function putTag($tag)
+    {
+        if (is_string($tag)) {
+            $tag = Tag::whereName($tag)->firstOrFail();
+        }
+        $this->tags()->syncWithoutDetaching($tag);
     }
 
     public function assignee()

@@ -16,12 +16,10 @@ class CreateAssignmentTagTable extends Migration
     public function up()
     {
         Schema::create('assignment_tag', function (Blueprint $table) {
-            $table->id();
+            $table->primary(['assignment_id', 'tag_id']);
             $table->foreignIdFor(Assignment::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Tag::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
-
-            $table->unique(['assignment_id', 'tag_id']);
         });
     }
 

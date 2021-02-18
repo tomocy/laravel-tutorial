@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\Assignment;
 use App\Notifications\AssignmentAssigned;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -43,15 +42,46 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function assign(array $data)
+    public function assignAssignment($assignment)
     {
-        $assignment = $this->assignments()->create($data);
+        $assignment = $this->assignments()->create($assignment);
         $this->notify(new AssignmentAssigned($assignment));
         return $assignment;
+    }
+
+    public function assignRole($role)
+    {
+        if (is_string($role)) {
+            $role = Role::whereName($role)->firstOrFail();
+        }
+        $this->roles()->syncWithoutDetaching($role);
+    }
+
+    public function hasAbility($ability)
+    {
+        if (is_a($ability, Ability::class)) {
+            $ability = $ability->name;
+        }
+        return $this->abilityNames()->contains($ability);
+    }
+
+    public function abilityNames()
+    {
+        return $this->abilities()->pluck('name');
+    }
+
+    public function abilities()
+    {
+        return $this->roles->map->abilities->flatten()->unique();
     }
 
     public function assignments()
     {
         return $this->hasMany(Assignment::class, 'assignee_id');
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class)->withTimestamps();
     }
 }

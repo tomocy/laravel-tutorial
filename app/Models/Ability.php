@@ -2,17 +2,18 @@
 
 namespace App\Models;
 
+use App\Models\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class Ability extends Model
 {
     use HasFactory;
 
     protected $fillable = ['name'];
 
-    public function assignments()
+    public function roles()
     {
-        return $this->belongsToMany(Assignment::class)->withTimestamps();
+        return $this->belongsToMany(Role::class)->withTimestamps();
     }
 }
