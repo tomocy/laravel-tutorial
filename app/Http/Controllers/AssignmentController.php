@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models;
+use App\Models\Assignment;
 use Illuminate\Http\Request;
 
 class AssignmentController extends Controller
 {
-    public function store(Article $article)
+    public function store()
     {
-        Article::create($this->validateAssignment());
+        Assignment::create($this->validateAssignment());
     }
 
-    public function update(Article $article)
+    public function update(Assignment $assignment)
     {
-        $article->update($this->validateAssignment());
+        $assignment->update($this->validateAssignment());
     }
 
     private function validateAssignment()

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Tag;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Gate;
 
 class Assignment extends Model
 {
@@ -18,9 +19,13 @@ class Assignment extends Model
         if ($this->completed) {
             return;
         }
-
         $this->completed = true;
         $this->save();
+    }
+
+    public function isAssignedTo(User $user)
+    {
+        return $this->assignee->is($user);
     }
 
     public function assignee()
