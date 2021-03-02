@@ -11,7 +11,23 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        require("tailwindcss"),
-    ]);
+if (!mix.inProduction()) {
+  mix.webpackConfig({
+    module: {
+      rules: [
+        {
+          enforce: 'pre',
+          exclude: /node_modules/,
+          loader: 'eslint-loader',
+          test: /\.(js|vue)?$/,
+        },
+      ],
+    },
+  });
+}
+
+mix
+  .js('resources/js/app.js', 'public/js')
+  .vue()
+  .extract(['vue'])
+  .postCss('resources/css/app.css', 'public/css', ['tailwindcss']);

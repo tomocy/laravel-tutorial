@@ -14,5 +14,7 @@ trim_trailing_whitespace = false
 [*.{yml,yaml}]
 indent_size = 2
 
-[*.json]
+[*.{js,jsx,ts,tsx,vue}]
 indent_size = 2
+end_of_line = lf
+max_line_length = 100
