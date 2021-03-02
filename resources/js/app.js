@@ -1,10 +1,14 @@
 import Vue from 'vue';
-import Alert from './Alert.vue';
+import ThePagePosts from './components/ThePagePosts.vue';
+import ThePagePost from './components/ThePagePost.vue';
 
-require('./bootstrap');
+import './bootstrap';
 
 // eslint-disable-next-line no-new
 new Vue({
   el: '#app',
-  components: { Alert },
+  components: {
+    ThePagePosts,
+    ThePagePost,
+  },
 });

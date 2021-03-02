@@ -29,5 +29,5 @@ if (!mix.inProduction()) {
 mix
   .js('resources/js/app.js', 'public/js')
   .vue()
-  .extract(['vue'])
+  .extract(['vue', 'axios', 'lodash'])
   .postCss('resources/css/app.css', 'public/css', ['tailwindcss']);

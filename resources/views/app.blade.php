@@ -9,9 +9,8 @@
     </head>
     <body class="antialiased">
         <div id="app">
-            <Alert />
+            @yield('contents')
         </div>
-        @yield('contents')
 
         <script src="/js/manifest.js"></script>
         <script src="/js/vendor.js"></script>
