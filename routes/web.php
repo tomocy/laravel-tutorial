@@ -19,6 +19,10 @@ Route::get('/', function () {
     ];
 });
 
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
 Route::get('/posts/{post}', 'PostsController@show');
 
 Route::post('/assignments', 'AssignmentController@store');
