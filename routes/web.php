@@ -23,7 +23,8 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Route::get('/posts/{post}', 'PostsController@show');
+Route::get('/posts', 'PostsController@index');
+Route::get('/posts/{post}', 'PostsController@show')->name('post.show');
 
 Route::post('/assignments', 'AssignmentController@store');
 Route::put('/assignments/{assignment}', 'AssignmentController@update');

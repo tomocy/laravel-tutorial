@@ -34,6 +34,7 @@
     "mtxr.sqltools-driver-mysql",
     "onecentlin.laravel-blade",
     "onecentlin.laravel5-snippets",
+    "bradlc.vscode-tailwindcss",
   ],
   // For use with PHP or Apache (e.g.php -S localhost:8080 or apache2ctl start)
   "forwardPorts": [

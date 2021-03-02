@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 class PostsController extends Controller
 {
-    public function show($slug)
+    public function index()
     {
-        return [
-            'body' => Post::where('slug', $slug)->firstOrFail()->body,
-        ];
+        return view('post.index', [
+            'posts' => Post::all(),
+        ]);
+    }
+
+    public function show(Post $post)
+    {
+        return view('post.show', compact('post'));
     }
 }
