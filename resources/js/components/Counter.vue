@@ -16,12 +16,13 @@
       sm:space-x-6"
   >
     <p
-      class="text-base"
+      class="counter-count text-base"
       v-text="count"
     />
     <div class="text-center space-y-2 sm:text-left">
       <button
         class="
+        counter-button-count
         px-4
         py-1
         text-sm
