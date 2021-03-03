@@ -4,6 +4,7 @@
         "source.fixAll.eslint": true,
         "source.fixAll.stylelint": true,
     },
+    "blade.format.enable": true,
     "javascript.format.enable": false,
     "css.validate": false,
     "scss.validate": false,

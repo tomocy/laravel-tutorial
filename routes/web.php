@@ -28,3 +28,5 @@ Route::get('/posts/{post}', 'PostsController@show')->name('post.show');
 
 Route::post('/assignments', 'AssignmentController@store');
 Route::put('/assignments/{assignment}', 'AssignmentController@update');
+
+Route::get('/products', 'ProductController@index');
