@@ -46,16 +46,19 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'Counter',
-  data() {
-    return {
-      count: 0,
-    };
-  },
+  computed: mapState([
+    'count',
+  ]),
   methods: {
     increment() {
-      this.count += 1;
+      this.$store.commit('increment');
+    },
+    decrement() {
+      this.$store.commit('decrement');
     },
   },
 };

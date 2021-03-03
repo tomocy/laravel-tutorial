@@ -9,6 +9,7 @@
     </head>
     <body class="antialiased">
         <div id="app">
+            <counter></counter>
             @yield('contents')
         </div>
 
